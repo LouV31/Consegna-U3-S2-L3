@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Loading from "./Loading";
 import Error from "./Error";
+import { Link } from "react-router-dom";
 
 const Gallery = (props) => {
     const [searchQ, setSearchQ] = useState(props.searchQ);
     const [type, setType] = useState(props.type);
-
+    const [movieImdb, setMovieImdb] = useState("");
     const [films, setFilms] = useState({ Search: [] });
 
     const [isLoading, setIsLoading] = useState(false);
@@ -57,20 +58,24 @@ const Gallery = (props) => {
 
                 <Row className="row row-cols-2 g-1 row-cols-sm-3 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 mb-5">
                     {filmsToDisplay.map((film, index) => (
-                        <Col
-                            key={`Film-${index}`}
-                            className={
-                                index === 5
-                                    ? "d-none d-md-block d-lg-none d-xxl-block"
-                                    : index === 4
-                                    ? "d-none d-md-block d-lg-none d-xl-block"
-                                    : index === 3
-                                    ? "d-sm-none d-md-block"
-                                    : ""
-                            }
-                        >
-                            <img src={film.Poster} className="img-fluid" />
-                        </Col>
+                        <Link to={`/movie-details/${film.imdbID}`}>
+                            <Col
+                                key={`Film-${index}`}
+                                className={
+                                    index === 5
+                                        ? "d-none d-md-block d-lg-none d-xxl-block"
+                                        : index === 4
+                                        ? "d-none d-md-block d-lg-none d-xl-block"
+                                        : index === 3
+                                        ? "d-sm-none d-md-block"
+                                        : ""
+                                }
+                                /* onClick={() => setMovieImdb(film.imdbID)}
+                                getMovieImdb={movieImdb} */
+                            >
+                                <img src={film.Poster} className="img-fluid" />
+                            </Col>
+                        </Link>
                     ))}
                 </Row>
             </Container>

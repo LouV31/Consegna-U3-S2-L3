@@ -1,9 +1,9 @@
-const SubHeader = () => {
+const SubHeader = (props) => {
     return (
         <section>
             <div className="d-flex align-items-center px-2 mb-3">
                 <div className="me-4">
-                    <h2 className="h1">TV Shows</h2>
+                    <h2 className="h1">{props.titlePage}</h2>
                 </div>
                 <div className="flex-grow-1">
                     <div className="dropdown d-flexjustify-content-between d-none d-sm-block">

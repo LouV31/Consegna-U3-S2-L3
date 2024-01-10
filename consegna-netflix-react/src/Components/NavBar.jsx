@@ -4,7 +4,10 @@ import { NavLink, useLocation } from "react-router-dom";
 const NavBar = ({ logo, avatar }) => {
     const location = useLocation();
     console.log("LOCATION", location);
-    const isValidLocation = location.pathname === "/" || location.pathname === "/Tv-Shows";
+    const isValidLocation =
+        location.pathname === "/" ||
+        location.pathname === "/Tv-Shows" ||
+        location.pathname.startsWith("/movie-details/");
     if (isValidLocation) {
         return (
             <header>
